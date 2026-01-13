@@ -1,0 +1,56 @@
+[project]
+name = "course-work-oop"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Руслан Галяудинов",email = "rus4855@yandex.ru"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.lint.dependencies]
+black = "^25.12.0"
+flake8 = "^7.3.0"
+isort = "^7.0.0"
+mypy = "^1.19.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^9.0.2"
+coverage = "^7.13.0"
+pytest-cov = "^7.0.0"
+
+[tool.isort]
+line_length = 79
+profile = "black"
+
+[tool.black]
+line-length = 79
+exclude = '''
+/\.git/
+'''
+
+[tool.mypy]
+disallow_untyped_defs = true
+warn_return_any = true
+exclude = "venv"
+
+[tool.flake8]
+max-line-lenght = 119
+ignore = ["E203", "E501", "W503"]
+exclude = ["venv", ".venv", "dist", "build", "__pycache__"]
+
+[tool.coverage.run]
+source = ["src"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = false
