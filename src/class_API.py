@@ -37,3 +37,13 @@ class HH(Parser):
                 self.__params['page'] += 1
         else:
             print("Ошибка загрузки данных с вакансиями.")
+
+if __name__ == "__main__":
+    import json
+
+    p = HH()
+    p.load_vacancies("Python-разработчик")
+    for vacancy in p.vacancies[0:10]:
+        print(json.dumps(vacancy, indent=4, ensure_ascii=False))
+        print(f"-----------------------------------------------")
+
