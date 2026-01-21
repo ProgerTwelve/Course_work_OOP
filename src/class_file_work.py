@@ -1,7 +1,5 @@
 import json
 from typing import Any
-
-from src.class_API import HH
 from src.class_abs_file_work import FileWorker
 from src.class_vacancies import Vacancy
 
@@ -10,7 +8,7 @@ class JSONFileWorker(FileWorker):
     """Класс для загрузки, получения и удаления данных о полученных вакансиях в файл в формате JSON.
     Является дочерним от класса FileWorker."""
 
-    def __init__(self, filename: str = "../data/vacancy.json"):
+    def __init__(self, filename: str = "data/vacancy.json"):
         """Конструктор класса JSONFileWorker."""
 
         self.__filename = filename
@@ -71,15 +69,3 @@ class JSONFileWorker(FileWorker):
                 json.dump(existing_data, f, ensure_ascii=False, indent=4)
         except (FileNotFoundError, json.JSONDecodeError):
             print("Файла нет или он пустой/поврежден")
-
-
-if __name__ == "__main__":
-    p = HH()
-    p.load_vacancies("Python-разработчик")
-    vacancy_list = []
-    for r in p.vacancies:
-        y = Vacancy(r["name"], r["salary"], r["alternate_url"], r["employer"], r["snippet"], r["experience"], r["employment"])
-        vacancy_list.append(y)
-    g = JSONFileWorker()
-    g.delete_data("https://hh.ru/vacancy/128981553")
-    print(g.get_data())

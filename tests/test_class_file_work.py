@@ -58,7 +58,7 @@ class TestJSONFileWorker:
         worker = JSONFileWorker()
         # Проверяем, что __filename является приватным
         assert hasattr(worker, '_JSONFileWorker__filename')
-        assert worker._JSONFileWorker__filename == "../data/vacancy.json"
+        assert worker._JSONFileWorker__filename == "data/vacancy.json"
 
     def test_init_custom_filename(self):
         """Тест инициализации с кастомным именем файла."""
