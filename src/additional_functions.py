@@ -74,8 +74,4 @@ def get_top_vacancies(vacancies: list[Vacancy], top_n: int) -> list[Vacancy]:
 
     sorted_vacancies = sort_vacancies(vacancies)
 
-    top_vacancies = []
-    for i in range(top_n):
-        top_vacancies.append(sorted_vacancies[i])
-
-    return top_vacancies
+    return sorted_vacancies[:top_n]
