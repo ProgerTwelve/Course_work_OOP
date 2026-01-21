@@ -10,7 +10,7 @@ class JSONFileWorker(FileWorker):
     """Класс для загрузки, получения и удаления данных о полученных вакансиях в файл в формате JSON.
     Является дочерним от класса FileWorker."""
 
-    def __init__(self, filename: str ="../data/vacancy.json"):
+    def __init__(self, filename: str = "../data/vacancy.json"):
         """Конструктор класса JSONFileWorker."""
 
         self.__filename = filename
