@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class Vacancy:
     """Класс для работы с вакансиями."""
 
@@ -32,7 +35,7 @@ class Vacancy:
         self.employment = employment["name"]
 
     @staticmethod
-    def __salary_validate(salary:dict[str | int]) -> int:
+    def __salary_validate(salary: dict[str | int]) -> int:
         """Приватный метод для определения среднего значения зарплаты, исходя из
         переданных данных в переменной salary."""
 
@@ -54,7 +57,7 @@ class Vacancy:
         return (f"Название вакансии   ----- {self.name}\n"
                 f"Заработная плата    ----- {self.salary} рублей\n"
                 f"Ссылка на вакансию  ----- {self.alternate_url}\n"
-                f"Работодатель        ----- {self.employer}\n" 
+                f"Работодатель        ----- {self.employer}\n"
                 f"Требования и навыки ----- {self.snippet}\n"
                 f"Наличие опыта       ----- {self.experience}\n"
                 f"Тип занятости       ----- {self.employment}\n"
@@ -71,23 +74,15 @@ class Vacancy:
 
         return self.salary > other.salary
 
+    def to_dict(self) -> dict[str, str | int | Any]:
+        """Метод для преобразования экземпляра класса в словарь."""
 
-if __name__ == "__main__":
-    from src.class_API import HH
-    vacancy_list = []
-    p = HH()
-    p.load_vacancies("Фотограф")
-    for v in p.vacancies:
-        if v["salary"]["currency"] == "RUR":
-            vacancy = Vacancy(
-                v["name"],
-                v["salary"],
-                v["alternate_url"],
-                v["employer"],
-                v["snippet"],
-                v["experience"],
-                v["employment"]
-            )
-            vacancy_list.append(vacancy)
-    for g in vacancy_list:
-        print(g)
+        return {
+            "name": self.name,
+            "salary": self.salary,
+            "alternate_url": self.alternate_url,
+            "employer": self.employer,
+            "snippet": self.snippet,
+            "experience": self.experience,
+            "employment": self.employment
+        }
